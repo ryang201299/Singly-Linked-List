@@ -1,20 +1,30 @@
-#include <string>
+#include <iostream>
 
 struct Node {
 	int data;
-	string name;
+	std::string name;
+	Node* next = NULL;
 
-	Node(int newData, string newName) {
+public:
+	Node(int newData, std::string newName) {
 		data = newData;
 		name = newName;
+	}
+	Node(int newData) {
+		data = newData;
 	}
 };
 
 class LinkedList {
 	Node* head;
 
+public:
+	LinkedList() {
+		head = NULL;
+	}
+
+	void insertBack(int data, std::string name);
+	void insertFront(int data, std::string name);
+	void remove(int data);
 	void printList();
-	void insertFront();
-	void insertBack();
-	void remove();
 };
