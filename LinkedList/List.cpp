@@ -4,7 +4,6 @@
 using namespace std;
 
 void LinkedList::printList() {
-	cout << "Linked list: ";
 	Node* currNode = head;
 	while (currNode != NULL) {
 		cout << "[" << currNode->data;
@@ -40,7 +39,23 @@ void LinkedList::insertBack(int data, string name) {
 }
 
 void LinkedList::remove(int data) {
-	// remove node from any position in list
+	if (head == NULL) {
+		cout << "No entries in list.";
+		return;
+	}
+	if (head->data == data) {
+		head = head->next;
+	}
+	else {
+		Node* currNode = head;
+		while (currNode->next != NULL) {
+			if (currNode->next->data == data) {
+				currNode->next = currNode->next->next;
+				return;
+			}
+			currNode = currNode->next;
+		}
+	}
 }
 
 int main() {
@@ -48,5 +63,9 @@ int main() {
 
 	list.insertFront(1, "Ryan");
 	list.insertBack(2, "Alex");
+	list.insertBack(3, "Birdy");
+
+	list.remove(3);
 	list.printList();
+
 }
