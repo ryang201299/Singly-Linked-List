@@ -4,6 +4,7 @@
 using namespace std;
 
 void LinkedList::printList() {
+	cout << "Linked list: ";
 	Node* currNode = head;
 	while (currNode != NULL) {
 		cout << "[" << currNode->data;
