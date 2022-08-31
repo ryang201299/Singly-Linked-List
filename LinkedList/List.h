@@ -2,14 +2,10 @@
 
 struct Node {
 	int data;
-	std::string name;
 	Node* next = NULL;
+	Node* prev = NULL;
 
 public:
-	Node(int newData, std::string newName) {
-		data = newData;
-		name = newName;
-	}
 	Node(int newData) {
 		data = newData;
 	}
@@ -23,8 +19,8 @@ public:
 		head = NULL;
 	}
 
-	void insertBack(int data, std::string name);
-	void insertFront(int data, std::string name);
+	void insertBack(int data);
+	void insertFront(int data);
 	void remove(int data);
 	void printList();
 };

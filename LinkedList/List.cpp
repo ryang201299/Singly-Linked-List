@@ -6,9 +6,7 @@ using namespace std;
 void LinkedList::printList() {
 	Node* currNode = head;
 	while (currNode != NULL) {
-		cout << "[" << currNode->data;
-		cout << ", " << currNode->name;
-		cout << "]";
+		cout << currNode->data;
 		if (currNode->next != NULL) {
 			cout << ", ";
 		}
@@ -17,14 +15,14 @@ void LinkedList::printList() {
 	cout << "" << endl;
 }
 
-void LinkedList::insertFront(int data, string name) {
-	Node* newNode = new Node(data, name);
+void LinkedList::insertFront(int data) {
+	Node* newNode = new Node(data);
 	newNode->next = head;
 	head = newNode;
 }
 
-void LinkedList::insertBack(int data, string name) {
-	Node* newNode = new Node(data, name);
+void LinkedList::insertBack(int data) {
+	Node* newNode = new Node(data);
 	
 	if (head == NULL) {
 		head = newNode;
@@ -38,34 +36,22 @@ void LinkedList::insertBack(int data, string name) {
 	}
 }
 
-void LinkedList::remove(int data) {
+void LinkedList::remove(int id) {
 	if (head == NULL) {
 		cout << "No entries in list.";
 		return;
 	}
-	if (head->data == data) {
+	if (head->data == id) {
 		head = head->next;
 	}
 	else {
 		Node* currNode = head;
 		while (currNode->next != NULL) {
-			if (currNode->next->data == data) {
+			if (currNode->next->data == id) {
 				currNode->next = currNode->next->next;
 				return;
 			}
 			currNode = currNode->next;
 		}
 	}
-}
-
-int main() {
-	LinkedList list;
-
-	list.insertFront(1, "Ryan");
-	list.insertBack(2, "Alex");
-	list.insertBack(3, "Birdy");
-
-	list.remove(3);
-	list.printList();
-
 }
